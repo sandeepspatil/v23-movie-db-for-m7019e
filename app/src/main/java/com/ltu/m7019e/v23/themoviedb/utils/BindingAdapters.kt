@@ -13,3 +13,13 @@ fun bindPosterImage(imgView: ImageView, imgUrl:String) {
             .into(imgView);
     }
 }
+
+@BindingAdapter("backdropImageUrl")
+fun bindBackdropImage(imgView: ImageView, imgUrl:String) {
+    imgUrl.let { backdropPath ->
+        Glide
+            .with(imgView)
+            .load(Contants.BACKDROP_IMAGE_BASE_URL + Contants.BACKDROP_IMAGE_WIDTH + backdropPath)
+            .into(imgView);
+    }
+}
