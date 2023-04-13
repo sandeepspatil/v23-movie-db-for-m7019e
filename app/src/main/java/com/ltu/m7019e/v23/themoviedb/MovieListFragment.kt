@@ -5,6 +5,9 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
+import android.widget.LinearLayout
+import android.widget.TextView
 import androidx.databinding.DataBindingUtil
 import com.ltu.m7019e.v23.themoviedb.database.Movies
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieListBinding
@@ -39,10 +42,10 @@ class MovieListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-//        val movies = Movies()
+        val movies = Movies()
 //
 //        val movieList = view.findViewById<LinearLayout>(R.id.movie_list_ll)
-//        val movieItem = movieList.findViewById<View>(R.id.movie_1)
+//        val movieItem = movieList.findViewById<View>(R.id.movie1)
 //        val movieTitle = movieItem.findViewById<TextView>(R.id.movie_title)
 //        val moviePoster = movieItem.findViewById<ImageView>(R.id.movie_poster)
 //
