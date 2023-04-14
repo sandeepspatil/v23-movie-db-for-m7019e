@@ -27,5 +27,17 @@
         <argument
             android:name="movie"
             app:argType="com.ltu.m7019e.v23.themoviedb.model.Movie" />
+        <action
+            android:id="@+id/action_MovieDetailFragment_to_three"
+            app:destination="@id/three" />
+    </fragment>
+    <fragment
+        android:id="@+id/three"
+        android:name="com.ltu.m7019e.v23.themoviedb.Three"
+        android:label="fragment_three"
+        tools:layout="@layout/fragment_three" >
+        <action
+            android:id="@+id/action_three_to_MovieListFragment"
+            app:destination="@id/MovieListFragment" />
     </fragment>
 </navigation>

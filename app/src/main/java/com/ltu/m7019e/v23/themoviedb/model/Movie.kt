@@ -9,5 +9,8 @@ data class Movie(
         var posterPath: String,
         var backdropPath: String,
         var releaseDate: String,
-        var overview: String
+        var overview: String,
+        var URL: String,
+        var genres: MutableList<String>,
+        var IMDB_id: String
 ) : Parcelable
