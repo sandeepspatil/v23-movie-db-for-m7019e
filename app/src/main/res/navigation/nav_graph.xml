@@ -28,4 +28,5 @@
             android:name="movie"
             app:argType="com.ltu.m7019e.v23.themoviedb.model.Movie" />
     </fragment>
+
 </navigation>

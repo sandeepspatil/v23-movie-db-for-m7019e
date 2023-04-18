@@ -1,5 +1,7 @@
 package com.ltu.m7019e.v23.themoviedb
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
@@ -45,6 +47,14 @@ class MovieDetailFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        binding.visitMovieSite.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(binding.movie?.homePage)))
+        }
+
+        binding.visitImdb.setOnClickListener {
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://imdb.com/title/${binding.movie?.imdb_id}/")))
+        }
 
         binding.backToMovieList.setOnClickListener {
             findNavController().navigate(MovieDetailFragmentDirections.actionMovieDetailFragmentToMovieListFragment())

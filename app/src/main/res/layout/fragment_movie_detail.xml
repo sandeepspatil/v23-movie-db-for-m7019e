@@ -46,6 +46,31 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/movie_detail_title" />
 
+
+        <Button
+            android:id="@+id/visit_movie_site"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="72dp"
+            android:text="@string/visit_site"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/visit_imdb"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/genre_list_rv" />
+
+        <Button
+            android:id="@+id/visit_imdb"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="72dp"
+            android:text="@string/visit_imdb"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.497"
+            app:layout_constraintStart_toEndOf="@id/visit_movie_site"
+            app:layout_constraintTop_toBottomOf="@id/genre_list_rv" />
+
         <Button
             android:id="@+id/back_to_movie_list"
             android:layout_width="wrap_content"
