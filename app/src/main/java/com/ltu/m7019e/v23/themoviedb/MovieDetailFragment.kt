@@ -59,5 +59,9 @@ class MovieDetailFragment : Fragment() {
         binding.backToMovieList.setOnClickListener {
             findNavController().navigate(MovieDetailFragmentDirections.actionMovieDetailFragmentToMovieListFragment())
         }
+
+        binding.toThirdFragment.setOnClickListener {
+            findNavController().navigate(MovieDetailFragmentDirections.actionMovieDetailFragmentToThirdFragment(movie))
+        }
     }
 }
