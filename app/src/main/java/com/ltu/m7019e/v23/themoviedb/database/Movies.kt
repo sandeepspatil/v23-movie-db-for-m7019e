@@ -9,102 +9,132 @@ class Movies {
         list.add(
             Movie(
                 1,
-                "Raya and the Last Dragon",
-                "/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg",
-                "/9xeEGUZjgiKlI69jwIOi0hjKUIk.jpg",
-                "2021-03-03",
-                "Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people."
+                "The Super Mario Bros. Movie",
+                listOf(
+                    Genre(1,"Animation"),
+                    Genre(2,"Adventure"),
+                    Genre(3,"Family"),
+                    Genre(4,"Fantasy"),
+                    Genre(5,"Comedy")
+                ),
+                "/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+                "/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg",
+                "2023-04-05",
+                "https://www.thesupermariobros.movie/",
+                "tt6718170",
+                "While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.",
             )
         )
         list.add(
             Movie(
                 2,
-                "Sentinelle",
-                "/fFRq98cW9lTo6di2o4lK1qUAWaN.jpg",
-                "/6TPZSJ06OEXeelx1U1VIAt0j9Ry.jpg",
-                "2021-03-05",
-                "Transferred home after a traumatizing combat mission, a highly trained French soldier uses her lethal skills to hunt down the man who hurt her sister."
-            )
+                "Shazam! Fury of the Gods",
+                listOf(
+                    Genre(4,"Fantasy"),
+                    Genre(6,"Action"),
+                    Genre(5,"Comedy")
+                ),
+                "/3GrRgt6CiLIUXUtoktcv1g2iwT5.jpg",
+                "/wybmSmviUXxlBmX44gtpow5Y9TB.jpg",
+                "2023-03-15",
+                "",
+                "tt10151854",
+                "Billy Batson and his foster siblings, who transform into superheroes by saying \"Shazam!\", are forced to get back into action and fight the Daughters of Atlas, who they must stop from using a weapon that could destroy the world."            )
         )
         list.add(
             Movie(
                 3,
-                "Zack Snyder's Justice League",
-                "/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg",
-                "/pcDc2WJAYGJTTvRSEIpRZwM3Ola.jpg",
-                "2021-03-18",
-                "Determined to ensure Superman's ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic proportions."
-            )
+                "Avatar: The Way of Water",
+                listOf(
+                    Genre(7,"Science Fiction"),
+                    Genre(2,"Adventure"),
+                    Genre(6,"Action")
+                ),
+                "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+                "/ovM06PdF3M8wvKb06i4sjW3xoww.jpg",
+                "2022-12-14",
+                "https://www.avatar.com/movies/avatar-the-way-of-water",
+                "tt1630029",
+                "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure."            )
         )
         list.add(
             Movie(
                 4,
-                "Tom & Jerry",
-                "/6KErczPBROQty7QoIsaa6wJYXZi.jpg",
-                "/z7HLq35df6ZpRxdMAE0qE3Ge4SJ.jpg",
-                "2021-02-11",
-                "Tom the cat and Jerry the mouse get kicked out of their home and relocate to a fancy New York hotel, where a scrappy employee named Kayla will lose her job if she can’t evict Jerry before a high-class wedding at the hotel. Her solution? Hiring Tom to get rid of the pesky mouse."
-            )
+                "Creed III",
+                listOf(
+                    Genre(8, "Drama"),
+                    Genre(6, "Action")
+                )
+                "/cvsXj3I9Q2iyyIo95AecSd1tad7.jpg",
+                "/5i6SjyDbDWqyun8klUuCxrlFbyw.jpg",
+                "2023-03-01",
+                "https://www.mgmstudios.com/creed-iii",
+                "tt11145118",
+                "After dominating the boxing world, Adonis Creed has been thriving in both his career and family life. When a childhood friend and former boxing prodigy, Damien Anderson, resurfaces after serving a long sentence in prison, he is eager to prove that he deserves his shot in the ring. The face-off between former friends is more than just a fight. To settle the score, Adonis must put his future on the line to battle Damien — a fighter who has nothing to lose."            )
         )
         list.add(
             Movie(
                 5,
-                "Below Zero",
-                "/dWSnsAGTfc8U27bWsy2RfwZs0Bs.jpg",
-                "/srYya1ZlI97Au4jUYAktDe3avyA.jpg",
-                "2021-01-29",
-                "When a prisoner transfer van is attacked, the cop in charge must fight those inside and outside while dealing with a silent foe: the icy temperatures."
+                "65",
+                listOf(
+                    Genre(7, "Science Fiction"),
+                    Genre(2, "Adventure"),
+                    Genre(9, "Thriller"),
+                    Genre(6, "Action")
+                )
+                "/rzRb63TldOKdKydCvWJM8B6EkPM.jpg",
+                "/eSVu1FvGPy86TDo4hQbpuHx55DJ.jpg",
+                "2023-03-02",
+                "https://www.65.movie",
+                "tt12261776",
+                "65 million years ago, the only 2 survivors of a spaceship from Somaris that crash-landed on Earth must fend off dinosaurs and reach the escape vessel in time before an imminent asteroid strike threatens to destroy the planet."
             )
         )
         list.add(
             Movie(
                 6,
-                "Raya and the Last Dragon",
-                "/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg",
-                "/9xeEGUZjgiKlI69jwIOi0hjKUIk.jpg",
-                "2021-03-03",
-                "Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people."
+                "The Super Mario Bros. Movie",
+                "/qNBAXBIQlnOThrVvA6mA2B5ggV6.jpg",
+                "/9n2tJBplPbgR2ca05hS5CKXwP2c.jpg",
+                "2023-04-05",
+                "While working underground to fix a water main, Brooklyn plumbers—and brothers—Mario and Luigi are transported down a mysterious pipe and wander into a magical new world. But when the brothers are separated, Mario embarks on an epic quest to find Luigi.",
             )
         )
         list.add(
             Movie(
                 7,
-                "Sentinelle",
-                "/fFRq98cW9lTo6di2o4lK1qUAWaN.jpg",
-                "/6TPZSJ06OEXeelx1U1VIAt0j9Ry.jpg",
-                "2021-03-05",
-                "Transferred home after a traumatizing combat mission, a highly trained French soldier uses her lethal skills to hunt down the man who hurt her sister."
-            )
+                "Shazam! Fury of the Gods",
+                "/3GrRgt6CiLIUXUtoktcv1g2iwT5.jpg",
+                "/wybmSmviUXxlBmX44gtpow5Y9TB.jpg",
+                "2023-03-15",
+                "Billy Batson and his foster siblings, who transform into superheroes by saying \"Shazam!\", are forced to get back into action and fight the Daughters of Atlas, who they must stop from using a weapon that could destroy the world."            )
         )
         list.add(
             Movie(
                 8,
-                "Zack Snyder's Justice League",
-                "/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg",
-                "/pcDc2WJAYGJTTvRSEIpRZwM3Ola.jpg",
-                "2021-03-18",
-                "Determined to ensure Superman's ultimate sacrifice was not in vain, Bruce Wayne aligns forces with Diana Prince with plans to recruit a team of metahumans to protect the world from an approaching threat of catastrophic proportions."
-            )
+                "Avatar: The Way of Water",
+                "/t6HIqrRAclMCA60NsSmeqe9RmNV.jpg",
+                "/ovM06PdF3M8wvKb06i4sjW3xoww.jpg",
+                "2022-12-14",
+                "Set more than a decade after the events of the first film, learn the story of the Sully family (Jake, Neytiri, and their kids), the trouble that follows them, the lengths they go to keep each other safe, the battles they fight to stay alive, and the tragedies they endure."            )
         )
         list.add(
             Movie(
                 9,
-                "Tom & Jerry",
-                "/6KErczPBROQty7QoIsaa6wJYXZi.jpg",
-                "/z7HLq35df6ZpRxdMAE0qE3Ge4SJ.jpg",
-                "2021-02-11",
-                "Tom the cat and Jerry the mouse get kicked out of their home and relocate to a fancy New York hotel, where a scrappy employee named Kayla will lose her job if she can’t evict Jerry before a high-class wedding at the hotel. Her solution? Hiring Tom to get rid of the pesky mouse."
-            )
+                "Creed III",
+                "/cvsXj3I9Q2iyyIo95AecSd1tad7.jpg",
+                "/5i6SjyDbDWqyun8klUuCxrlFbyw.jpg",
+                "2023-03-01",
+                "After dominating the boxing world, Adonis Creed has been thriving in both his career and family life. When a childhood friend and former boxing prodigy, Damien Anderson, resurfaces after serving a long sentence in prison, he is eager to prove that he deserves his shot in the ring. The face-off between former friends is more than just a fight. To settle the score, Adonis must put his future on the line to battle Damien — a fighter who has nothing to lose."            )
         )
         list.add(
             Movie(
                 10,
-                "Below Zero",
-                "/dWSnsAGTfc8U27bWsy2RfwZs0Bs.jpg",
-                "/srYya1ZlI97Au4jUYAktDe3avyA.jpg",
-                "2021-01-29",
-                "When a prisoner transfer van is attacked, the cop in charge must fight those inside and outside while dealing with a silent foe: the icy temperatures."
-            )
+                "65",
+                "/rzRb63TldOKdKydCvWJM8B6EkPM.jpg",
+                "/eSVu1FvGPy86TDo4hQbpuHx55DJ.jpg",
+                "2023-03-02",
+                "65 million years ago, the only 2 survivors of a spaceship from Somaris that crash-landed on Earth must fend off dinosaurs and reach the escape vessel in time before an imminent asteroid strike threatens to destroy the planet."            )
         )
     }
 }
