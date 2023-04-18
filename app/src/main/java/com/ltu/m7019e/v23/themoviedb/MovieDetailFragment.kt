@@ -6,8 +6,13 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.TextView
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.RecyclerView
+import com.ltu.m7019e.v23.themoviedb.adapter.GenreListAdapter
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieDetailBinding
+import com.ltu.m7019e.v23.themoviedb.model.Genre
 import com.ltu.m7019e.v23.themoviedb.model.Movie
 
 /**
@@ -27,6 +32,11 @@ class MovieDetailFragment : Fragment() {
         // Inflate the layout for this fragment
         _binding = FragmentMovieDetailBinding.inflate(inflater)
         movie = MovieDetailFragmentArgs.fromBundle(requireArguments()).movie
+
+        val genreListAdapter = GenreListAdapter(movie.genres)
+
+        binding.genreListRv.adapter = genreListAdapter
+
         binding.movie = movie
 
         return binding.root
