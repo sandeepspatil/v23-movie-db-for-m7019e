@@ -1,17 +1,19 @@
 package com.ltu.m7019e.v23.themoviedb
 
 import android.os.Bundle
+import android.view.*
 import androidx.fragment.app.Fragment
-import android.view.LayoutInflater
-import android.view.View
-import android.view.ViewGroup
+import androidx.core.view.MenuHost
+import androidx.core.view.MenuProvider
 import androidx.databinding.DataBindingUtil
+import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ltu.m7019e.v23.themoviedb.adapter.MovieListAdapter
 import com.ltu.m7019e.v23.themoviedb.adapter.MovieListClickListener
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieListBinding
 import com.ltu.m7019e.v23.themoviedb.databinding.MovieListItemBinding
+import com.ltu.m7019e.v23.themoviedb.network.DataFetchStatus
 import com.ltu.m7019e.v23.themoviedb.viewmodel.MovieListViewModel
 import com.ltu.m7019e.v23.themoviedb.viewmodel.MovieListViewModelFactory
 
@@ -41,50 +43,73 @@ class MovieListFragment : Fragment() {
         val movieListAdapter = MovieListAdapter(
             MovieListClickListener { movie ->
                 viewModel.onMovieListItemClicked(movie)
-            }
-        )
-
+            })
         binding.movieListRv.adapter = movieListAdapter
-
-        viewModel.movieList.observe(
-            viewLifecycleOwner
-        ) { movieList ->
+        viewModel.movieList.observe(viewLifecycleOwner) { movieList ->
             movieList?.let {
                 movieListAdapter.submitList(movieList)
             }
         }
 
         viewModel.navigateToMovieDetail.observe(viewLifecycleOwner) { movie ->
-            movie?.let{
-                this.findNavController().navigate(MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(movie))
-
+            movie?.let {
+                this.findNavController().navigate(
+                    MovieListFragmentDirections.actionMovieListFragmentToMovieDetailFragment(movie)
+                )
                 viewModel.onMovieDetailNavigated()
             }
         }
 
+        viewModel.dataFetchStatus.observe(viewLifecycleOwner) { status ->
+            status?.let {
+                when (status) {
+                    DataFetchStatus.LOADING -> {
+                        binding.statusImage.visibility = View.VISIBLE
+                        binding.statusImage.setImageResource(R.drawable.loading_animation)
+                    }
+                    DataFetchStatus.ERROR -> {
+                        binding.statusImage.visibility = View.VISIBLE
+                        binding.statusImage.setImageResource(R.drawable.ic_connection_error)
+                    }
+                    DataFetchStatus.DONE -> {
+                        binding.statusImage.visibility = View.GONE
+                    }
+                }
+            }
+        }
 
         return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        super.onViewCreated(view, savedInstanceState)
+        // The usage of an interface lets you inject your own implementation
+        val menuHost: MenuHost = requireActivity()
 
-//        val movies = Movies()
-//
-//        val movieList = view.findViewById<LinearLayout>(R.id.movie_list_ll)
-//        val movieItem = movieList.findViewById<View>(R.id.movie_1)
-//        val movieTitle = movieItem.findViewById<TextView>(R.id.movie_title)
-//        val moviePoster = movieItem.findViewById<ImageView>(R.id.movie_poster)
-//
-//        movieTitle.text = movies.list[0].title
-//        Glide
-//            .with(this)
-//            .load(Contants.POSTER_IMAGE_BASE_URL + Contants.POSTER_IMAGE_WIDTH + movies.list[0].posterPath)
-//            .into(moviePoster);
+        // Add menu items without using the Fragment Menu APIs
+        // Note how we can tie the MenuProvider to the viewLifecycleOwner
+        // and an optional Lifecycle.State (here, RESUMED) to indicate when
+        // the menu should be visible
+        menuHost.addMenuProvider(object : MenuProvider {
+            override fun onCreateMenu(menu: Menu, menuInflater: MenuInflater) {
+                // Add menu items here
+                menuInflater.inflate(R.menu.menu_main, menu)
+            }
 
-
-//        view.findViewById<Button>(R.id.button_first).setOnClickListener {
-//            findNavController().navigate(R.id.action_FirstFragment_to_SecondFragment)
-//        }
+            override fun onMenuItemSelected(menuItem: MenuItem): Boolean {
+                // Handle the menu selection
+                when (menuItem.itemId) {
+                    R.id.action_load_popular_movies -> {
+                        viewModel.getPopularMovies()
+                    }
+                    R.id.action_load_top_rated_movies -> {
+                        viewModel.getTopRatedMovies()
+                    }
+                    R.id.action_load_saved_movies -> {
+                        //viewModel.getSavedMovies()
+                    }
+                }
+                return true
+            }
+        }, viewLifecycleOwner, Lifecycle.State.RESUMED)
     }
 }

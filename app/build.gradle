@@ -49,9 +49,15 @@ dependencies {
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
     implementation 'androidx.navigation:navigation-fragment-ktx:2.5.3'
     implementation 'androidx.navigation:navigation-ui-ktx:2.5.3'
+    implementation 'androidx.activity:activity:1.7.0'
 
     //Material UI ->
     implementation 'com.google.android.material:material:1.8.0'
+
+    // Retrofit and Moshi and Okhttp
+    implementation 'com.squareup.moshi:moshi-kotlin:1.14.0'
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+    implementation "com.squareup.okhttp3:logging-interceptor:4.9.3"
 
     //Glide Image library -> https://github.com/bumptech/glide
     implementation 'com.github.bumptech.glide:glide:4.12.0'
