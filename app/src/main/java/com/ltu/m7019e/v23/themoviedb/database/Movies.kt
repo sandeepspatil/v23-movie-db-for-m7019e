@@ -8,15 +8,19 @@ class Movies {
     init {
         list.add(
             Movie(
+                "tt5109280",
                 "Raya and the Last Dragon",
                 "/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg",
                 "/9xeEGUZjgiKlI69jwIOi0hjKUIk.jpg",
                 "2021-03-03",
                 "Long ago, in the fantasy world of Kumandra, humans and dragons lived together in harmony. But when an evil force threatened the land, the dragons sacrificed themselves to save humanity. Now, 500 years later, that same evil has returned and it’s up to a lone warrior, Raya, to track down the legendary last dragon to restore the fractured land and its divided people."
+
+
             )
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Sentinelle",
                 "/fFRq98cW9lTo6di2o4lK1qUAWaN.jpg",
                 "/6TPZSJ06OEXeelx1U1VIAt0j9Ry.jpg",
@@ -26,6 +30,7 @@ class Movies {
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Zack Snyder's Justice League",
                 "/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg",
                 "/pcDc2WJAYGJTTvRSEIpRZwM3Ola.jpg",
@@ -35,6 +40,7 @@ class Movies {
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Tom & Jerry",
                 "/6KErczPBROQty7QoIsaa6wJYXZi.jpg",
                 "/z7HLq35df6ZpRxdMAE0qE3Ge4SJ.jpg",
@@ -44,6 +50,7 @@ class Movies {
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Below Zero",
                 "/dWSnsAGTfc8U27bWsy2RfwZs0Bs.jpg",
                 "/srYya1ZlI97Au4jUYAktDe3avyA.jpg",
@@ -53,6 +60,7 @@ class Movies {
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Raya and the Last Dragon",
                 "/lPsD10PP4rgUGiGR4CCXA6iY0QQ.jpg",
                 "/9xeEGUZjgiKlI69jwIOi0hjKUIk.jpg",
@@ -62,6 +70,7 @@ class Movies {
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Sentinelle",
                 "/fFRq98cW9lTo6di2o4lK1qUAWaN.jpg",
                 "/6TPZSJ06OEXeelx1U1VIAt0j9Ry.jpg",
@@ -71,6 +80,7 @@ class Movies {
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Zack Snyder's Justice League",
                 "/tnAuB8q5vv7Ax9UAEje5Xi4BXik.jpg",
                 "/pcDc2WJAYGJTTvRSEIpRZwM3Ola.jpg",
@@ -80,6 +90,7 @@ class Movies {
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Tom & Jerry",
                 "/6KErczPBROQty7QoIsaa6wJYXZi.jpg",
                 "/z7HLq35df6ZpRxdMAE0qE3Ge4SJ.jpg",
@@ -89,6 +100,7 @@ class Movies {
         )
         list.add(
             Movie(
+                "tt5109280",
                 "Below Zero",
                 "/dWSnsAGTfc8U27bWsy2RfwZs0Bs.jpg",
                 "/srYya1ZlI97Au4jUYAktDe3avyA.jpg",

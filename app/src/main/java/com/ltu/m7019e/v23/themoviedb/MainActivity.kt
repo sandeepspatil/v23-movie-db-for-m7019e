@@ -10,10 +10,9 @@ class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-<<<<<<< HEAD
+
         //setContentView(R.layout.fragment_second)
-=======
->>>>>>> 8aea157ead6aae7e0aa1b61f930bef26703718de
+
         setContentView(R.layout.activity_main)
         setSupportActionBar(findViewById(R.id.toolbar))
     }

@@ -20,7 +20,7 @@ class MovieDetailFragment : Fragment() {
 
     companion object {
         const val LETTER = "letter"
-        const val SEARCH_PREFIX = "https://www.imdb.com/"
+        const val SEARCH_PREFIX = "https://www.imdb.com/title/"
     }
 
     private var _binding: FragmentMovieDetailBinding? = null
@@ -54,10 +54,8 @@ class MovieDetailFragment : Fragment() {
 
         binding.toimdbbutton.setOnClickListener {
             //val context = binding.toimdbbutton.context
-            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(SEARCH_PREFIX))
+            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(SEARCH_PREFIX + movie.id))
             startActivity(intent)
-
-
         }
 
 

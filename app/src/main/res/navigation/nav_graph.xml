@@ -35,5 +35,9 @@
         android:id="@+id/movieReview"
         android:name="com.ltu.m7019e.v23.themoviedb.movieReview"
         android:label="fragment_movie_review"
-        tools:layout="@layout/fragment_movie_review" />
+        tools:layout="@layout/fragment_movie_review" >
+        <action
+            android:id="@+id/action_movieReview_to_MovieDetailFragment"
+            app:destination="@id/MovieDetailFragment" />
+    </fragment>
 </navigation>
