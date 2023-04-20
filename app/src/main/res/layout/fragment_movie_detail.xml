@@ -39,10 +39,27 @@
             android:id="@+id/back_to_movie_list"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginBottom="28dp"
             android:text="@string/previous"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.132"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/toreviewbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="review"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent" />
+
+        <Button
+            android:id="@+id/toimdbbutton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="imdb"
+            app:layout_constraintBottom_toTopOf="@+id/toreviewbutton"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

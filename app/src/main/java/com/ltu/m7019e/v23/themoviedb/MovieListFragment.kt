@@ -65,7 +65,7 @@ class MovieListFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        val movies = Movies()
+//        val movies = Movies()
 //
 //        val movieList = view.findViewById<LinearLayout>(R.id.movie_list_ll)
 //        val movieItem = movieList.findViewById<View>(R.id.movie1)

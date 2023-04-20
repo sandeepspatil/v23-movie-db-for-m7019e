@@ -27,5 +27,13 @@
         <argument
             android:name="movie"
             app:argType="com.ltu.m7019e.v23.themoviedb.model.Movie" />
+        <action
+            android:id="@+id/action_MovieDetailFragment_to_movieReview"
+            app:destination="@id/movieReview" />
     </fragment>
+    <fragment
+        android:id="@+id/movieReview"
+        android:name="com.ltu.m7019e.v23.themoviedb.movieReview"
+        android:label="fragment_movie_review"
+        tools:layout="@layout/fragment_movie_review" />
 </navigation>
