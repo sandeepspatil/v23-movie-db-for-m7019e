@@ -7,9 +7,10 @@ class Movies {
     val list = mutableListOf<Movie>()
 
     init {
+        /*
         list.add(
             Movie(
-                1,
+                502356,
                 "The Super Mario Bros. Movie",
                 listOf(
                     Genre(1,"Animation"),
@@ -28,7 +29,7 @@ class Movies {
         )
         list.add(
             Movie(
-                2,
+                594767,
                 "Shazam! Fury of the Gods",
                 listOf(
                     Genre(4,"Fantasy"),
@@ -44,7 +45,7 @@ class Movies {
         )
         list.add(
             Movie(
-                3,
+                76600,
                 "Avatar: The Way of Water",
                 listOf(
                     Genre(7,"Science Fiction"),
@@ -60,7 +61,7 @@ class Movies {
         )
         list.add(
             Movie(
-                4,
+                677179,
                 "Creed III",
                 listOf(
                     Genre(8, "Drama"),
@@ -75,7 +76,7 @@ class Movies {
         )
         list.add(
             Movie(
-                5,
+                700391,
                 "65",
                 listOf(
                     Genre(7, "Science Fiction"),
@@ -93,7 +94,7 @@ class Movies {
         )
         list.add(
             Movie(
-                6,
+                502356,
                 "The Super Mario Bros. Movie",
                 listOf(
                     Genre(1,"Animation"),
@@ -112,7 +113,7 @@ class Movies {
         )
         list.add(
             Movie(
-                7,
+                594767,
                 "Shazam! Fury of the Gods",
                 listOf(
                     Genre(4,"Fantasy"),
@@ -128,7 +129,7 @@ class Movies {
         )
         list.add(
             Movie(
-                8,
+                76600,
                 "Avatar: The Way of Water",
                 listOf(
                     Genre(7,"Science Fiction"),
@@ -144,7 +145,7 @@ class Movies {
         )
         list.add(
             Movie(
-                9,
+                677179,
                 "Creed III",
                 listOf(
                     Genre(8, "Drama"),
@@ -159,7 +160,7 @@ class Movies {
         )
         list.add(
             Movie(
-                10,
+                700391,
                 "65",
                 listOf(
                     Genre(7, "Science Fiction"),
@@ -175,5 +176,9 @@ class Movies {
                 "65 million years ago, the only 2 survivors of a spaceship from Somaris that crash-landed on Earth must fend off dinosaurs and reach the escape vessel in time before an imminent asteroid strike threatens to destroy the planet."
             )
         )
+
+
+         */
+
     }
 }
