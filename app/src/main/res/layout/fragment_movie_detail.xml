@@ -4,9 +4,16 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
+
         <variable
             name="movie"
             type="com.ltu.m7019e.v23.themoviedb.model.Movie" />
+
+        <variable
+            name="viewModel"
+            type="com.ltu.m7019e.v23.themoviedb.viewmodel.MovieDetailViewModel" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -44,5 +51,29 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/save_to_database"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{ () -> viewModel.onSaveMovieButtonClicked(movie)}"
+            android:text="@string/save_locally"
+            android:visibility="@{viewModel.isFavorite ? View.GONE : View.VISIBLE}"
+            app:layout_constraintBottom_toTopOf="@+id/back_to_movie_list"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Button
+            android:id="@+id/remove_from_database"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:onClick="@{ () -> viewModel.onRemoveMovieButtonClicked(movie)}"
+            android:text="@string/remove_locally"
+            android:visibility="@{viewModel.isFavorite ? View.VISIBLE : View.GONE}"
+            app:layout_constraintBottom_toTopOf="@+id/back_to_movie_list"
+            app:layout_constraintEnd_toEndOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

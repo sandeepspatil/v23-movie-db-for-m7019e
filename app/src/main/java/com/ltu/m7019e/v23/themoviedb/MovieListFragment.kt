@@ -11,6 +11,8 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ltu.m7019e.v23.themoviedb.adapter.MovieListAdapter
 import com.ltu.m7019e.v23.themoviedb.adapter.MovieListClickListener
+import com.ltu.m7019e.v23.themoviedb.database.MovieDatabase
+import com.ltu.m7019e.v23.themoviedb.database.MovieDatabaseDao
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieListBinding
 import com.ltu.m7019e.v23.themoviedb.databinding.MovieListItemBinding
 import com.ltu.m7019e.v23.themoviedb.network.DataFetchStatus
@@ -25,6 +27,8 @@ class MovieListFragment : Fragment() {
     private lateinit var viewModel: MovieListViewModel
     private lateinit var viewModelFactory: MovieListViewModelFactory
 
+    private lateinit var movieDatabaseDao: MovieDatabaseDao
+
     private var _binding: FragmentMovieListBinding? = null;
     private val binding get() = _binding!!
 
@@ -36,8 +40,9 @@ class MovieListFragment : Fragment() {
         _binding = FragmentMovieListBinding.inflate(inflater)
 
         val application = requireNotNull(this.activity).application
+        movieDatabaseDao = MovieDatabase.getInstance(application).movieDatabaseDao
 
-        viewModelFactory = MovieListViewModelFactory(application)
+        viewModelFactory = MovieListViewModelFactory(movieDatabaseDao, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MovieListViewModel::class.java)
 
         val movieListAdapter = MovieListAdapter(
@@ -105,7 +110,7 @@ class MovieListFragment : Fragment() {
                         viewModel.getTopRatedMovies()
                     }
                     R.id.action_load_saved_movies -> {
-                        //viewModel.getSavedMovies()
+                        viewModel.getSavedMovies()
                     }
                 }
                 return true
