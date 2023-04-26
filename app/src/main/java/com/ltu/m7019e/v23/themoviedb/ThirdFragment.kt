@@ -1,5 +1,6 @@
 package com.ltu.m7019e.v23.themoviedb
 
+import android.annotation.SuppressLint
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
@@ -7,17 +8,23 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebChromeClient
+import android.webkit.WebSettings
+import android.widget.MediaController
+import android.widget.VideoView
 import androidx.activity.addCallback
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
 import com.ltu.m7019e.v23.themoviedb.adapter.GenreListAdapter
 import com.ltu.m7019e.v23.themoviedb.adapter.ReviewListAdapter
+import com.ltu.m7019e.v23.themoviedb.adapter.VideoListAdapter
 import com.ltu.m7019e.v23.themoviedb.database.MovieDatabase
 import com.ltu.m7019e.v23.themoviedb.database.MovieDatabaseDao
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieDetailBinding
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieListBinding
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentThirdBinding
 import com.ltu.m7019e.v23.themoviedb.model.Movie
+import com.ltu.m7019e.v23.themoviedb.utils.Constants
 import com.ltu.m7019e.v23.themoviedb.viewmodel.*
 
 /**
@@ -57,6 +64,9 @@ class ThirdFragment : Fragment() {
         val reviewListAdapter = ReviewListAdapter()
         binding.reviewListRv.adapter = reviewListAdapter
 
+        val videoListAdapter = VideoListAdapter()
+        binding.movieVidRv.adapter = videoListAdapter
+
         val application = requireNotNull(this.activity).application
         movieDatabaseDao = MovieDatabase.getInstance(application).movieDatabaseDao
 
@@ -67,9 +77,16 @@ class ThirdFragment : Fragment() {
             reviewListAdapter.submitList(it)
         }
 
+        viewModel.videos.observe(viewLifecycleOwner) {
+            videoListAdapter.submitList(it)
+        }
+
+
+
         return binding.root
     }
 
+    @SuppressLint("SetJavaScriptEnabled")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 

@@ -9,10 +9,8 @@ import androidx.lifecycle.viewModelScope
 import com.ltu.m7019e.v23.themoviedb.database.MovieDatabaseDao
 import com.ltu.m7019e.v23.themoviedb.model.Movie
 import com.ltu.m7019e.v23.themoviedb.model.Review
-import com.ltu.m7019e.v23.themoviedb.network.DataFetchStatus
-import com.ltu.m7019e.v23.themoviedb.network.MovieResponse
-import com.ltu.m7019e.v23.themoviedb.network.ReviewResponse
-import com.ltu.m7019e.v23.themoviedb.network.TMDBApi
+import com.ltu.m7019e.v23.themoviedb.model.Video
+import com.ltu.m7019e.v23.themoviedb.network.*
 import kotlinx.coroutines.launch
 
 class ThirdFragmentViewModel(private val movieDatabaseDao: MovieDatabaseDao,
@@ -31,17 +29,41 @@ class ThirdFragmentViewModel(private val movieDatabaseDao: MovieDatabaseDao,
             return _reviews
         }
 
+    private val _videos = MutableLiveData<List<Video>>()
+    val videos: LiveData<List<Video>>
+        get() {
+            return _videos
+        }
+
     init {
-        _dataFetchStatus.value = DataFetchStatus.LOADING
         getReviews(movie)
+        getVideos(movie)
     }
 
     fun getReviews(movie: Movie){
+        _dataFetchStatus.value = DataFetchStatus.LOADING
+
         viewModelScope.launch {
             try {
                 val reviewResponse: ReviewResponse =
                     TMDBApi.movieListRetrofitService.getMovieReviews(movie.id)
                 _reviews.value = reviewResponse.results
+                _dataFetchStatus.value = DataFetchStatus.DONE
+            } catch (e: Exception) {
+                _dataFetchStatus.value = DataFetchStatus.ERROR
+                _reviews.value = arrayListOf(Review("","Error",e.message.toString(),"Error","Error","Error"))
+            }
+        }
+    }
+
+    fun getVideos(movie: Movie){
+        _dataFetchStatus.value = DataFetchStatus.LOADING
+
+        viewModelScope.launch {
+            try {
+                val videoResponse: VideoResponse =
+                    TMDBApi.movieListRetrofitService.getMovieVideos(movie.id)
+                _videos.value = videoResponse.results
                 _dataFetchStatus.value = DataFetchStatus.DONE
             } catch (e: Exception) {
                 _dataFetchStatus.value = DataFetchStatus.ERROR

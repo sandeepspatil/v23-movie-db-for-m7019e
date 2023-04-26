@@ -15,13 +15,28 @@
     android:layout_height="match_parent"
     tools:context=".ThirdFragment">
 
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/movie_vid_rv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:scrollbars="horizontal"
+            android:orientation="horizontal"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
+            />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/review_list_rv"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:scrollbars="horizontal"
             android:orientation="horizontal"
+            app:layout_constraintTop_toBottomOf="@id/movie_vid_rv"
+            app:layout_constraintStart_toStartOf="parent"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
+
 
         <Button
             android:id="@+id/to_movie_details"
