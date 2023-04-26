@@ -7,6 +7,7 @@
         <variable
             name="movie"
             type="com.ltu.m7019e.v23.themoviedb.model.Movie" />
+
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout
@@ -14,14 +15,13 @@
     android:layout_height="match_parent"
     tools:context=".ThirdFragment">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="@string/hello_third_fragment"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent" />
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/review_list_rv"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:scrollbars="horizontal"
+            android:orientation="horizontal"
+            app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
         <Button
             android:id="@+id/to_movie_details"

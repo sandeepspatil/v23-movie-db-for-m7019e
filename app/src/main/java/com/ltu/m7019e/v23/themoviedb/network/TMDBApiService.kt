@@ -66,6 +66,13 @@ interface TMDBApiService {
         @Query("api_key")
         apiKey: String = Constants.API_KEY
     ): MovieDetailsResponse
+    @GET("{movie_id}/reviews")
+    suspend fun getMovieReviews(
+        @Path("movie_id")
+        movieId: Long,
+        @Query("api_key")
+        apiKey: String = Constants.API_KEY
+    ): ReviewResponse
 }
 
 object TMDBApi {

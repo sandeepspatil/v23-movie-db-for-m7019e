@@ -8,14 +8,27 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.activity.addCallback
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import com.ltu.m7019e.v23.themoviedb.adapter.GenreListAdapter
+import com.ltu.m7019e.v23.themoviedb.adapter.ReviewListAdapter
+import com.ltu.m7019e.v23.themoviedb.database.MovieDatabase
+import com.ltu.m7019e.v23.themoviedb.database.MovieDatabaseDao
+import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieDetailBinding
+import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieListBinding
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentThirdBinding
 import com.ltu.m7019e.v23.themoviedb.model.Movie
+import com.ltu.m7019e.v23.themoviedb.viewmodel.*
 
 /**
  * A simple [Fragment] subclass as the second destination in the navigation.
  */
 class ThirdFragment : Fragment() {
+
+    private lateinit var viewModel: ThirdFragmentViewModel
+    private lateinit var viewModelFactory: ThirdFragmentViewModelFactory
+
+    private lateinit var movieDatabaseDao: MovieDatabaseDao
 
     private var _binding: FragmentThirdBinding? = null
     private val binding get() = _binding!!
@@ -37,8 +50,22 @@ class ThirdFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         _binding = FragmentThirdBinding.inflate(inflater)
+        binding.lifecycleOwner = this
         movie = ThirdFragmentArgs.fromBundle(requireArguments()).movie
+        binding.movie = movie
 
+        val reviewListAdapter = ReviewListAdapter()
+        binding.reviewListRv.adapter = reviewListAdapter
+
+        val application = requireNotNull(this.activity).application
+        movieDatabaseDao = MovieDatabase.getInstance(application).movieDatabaseDao
+
+        viewModelFactory = ThirdFragmentViewModelFactory(movieDatabaseDao, application, movie)
+        viewModel = ViewModelProvider(this, viewModelFactory)[ThirdFragmentViewModel::class.java]
+
+        viewModel.reviews.observe(viewLifecycleOwner) {
+            reviewListAdapter.submitList(it)
+        }
 
         return binding.root
     }
