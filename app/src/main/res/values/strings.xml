@@ -20,4 +20,5 @@
     <string name="movies_are_being_loaded">Movies are being Loaded</string>
     <string name="save_locally">Save Locally</string>
     <string name="remove_locally">Remove Locally</string>
+    <string name="movie_detail_api_error">ERROR!!</string>
 </resources>

@@ -19,6 +19,8 @@ import com.ltu.m7019e.v23.themoviedb.database.MovieDatabaseDao
 import com.ltu.m7019e.v23.themoviedb.databinding.FragmentMovieDetailBinding
 import com.ltu.m7019e.v23.themoviedb.model.Genre
 import com.ltu.m7019e.v23.themoviedb.model.Movie
+import com.ltu.m7019e.v23.themoviedb.network.DataFetchStatus
+import com.ltu.m7019e.v23.themoviedb.utils.Constants
 import com.ltu.m7019e.v23.themoviedb.viewmodel.MovieDetailViewModel
 import com.ltu.m7019e.v23.themoviedb.viewmodel.MovieDetailViewModelFactory
 
@@ -35,7 +37,7 @@ class MovieDetailFragment : Fragment() {
     private var _binding: FragmentMovieDetailBinding? = null
     private val binding get() = _binding!!
 
-    private lateinit var movie: Movie
+    private lateinit var movie : Movie
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -45,18 +47,46 @@ class MovieDetailFragment : Fragment() {
         _binding = FragmentMovieDetailBinding.inflate(inflater)
         binding.lifecycleOwner = this
         movie = MovieDetailFragmentArgs.fromBundle(requireArguments()).movie
+        binding.movie = movie
 
-        val genreListAdapter = movie.genres?.let { GenreListAdapter(it.genres) }
-
+        val genreListAdapter = GenreListAdapter()
         binding.genreListRv.adapter = genreListAdapter
+
         val application = requireNotNull(this.activity).application
         movieDatabaseDao = MovieDatabase.getInstance(application).movieDatabaseDao
 
         viewModelFactory = MovieDetailViewModelFactory(movieDatabaseDao, application, movie)
-        viewModel = ViewModelProvider(this, viewModelFactory).get(MovieDetailViewModel::class.java)
+        viewModel = ViewModelProvider(this, viewModelFactory)[MovieDetailViewModel::class.java]
 
-        binding.movie = movie
-        binding.viewModel = viewModel
+        viewModel.movie.observe(viewLifecycleOwner) { mv ->
+            movie = mv
+            binding.movie = mv
+            mv.genres?.let {
+                genreListAdapter.submitList(it)
+            }
+        }
+
+        viewModel.dataFetchStatus.observe(viewLifecycleOwner) { status ->
+            status?.let {
+                when (status) {
+                    DataFetchStatus.LOADING -> {
+                        binding.visitImdb.visibility = View.GONE
+                        binding.visitMovieSite.visibility = View.GONE
+                    }
+                    DataFetchStatus.ERROR -> {
+                        binding.movieDetailTitle.text = getString(R.string.movie_detail_api_error)
+                    }
+                    DataFetchStatus.DONE -> {
+                        if(movie.homePage != ""){
+                            binding.visitMovieSite.visibility = View.VISIBLE
+                        }
+                        if(movie.imdb_id != ""){
+                            binding.visitImdb.visibility = View.VISIBLE
+                        }
+                    }
+                }
+            }
+        }
 
         return binding.root
 
@@ -70,7 +100,7 @@ class MovieDetailFragment : Fragment() {
         }
 
         binding.visitImdb.setOnClickListener {
-            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse("https://imdb.com/title/${binding.movie?.imdb_id}/")))
+            startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(Constants.IMDB_BASE_URL + binding.movie?.imdb_id)))
         }
 
         binding.backToMovieList.setOnClickListener {
@@ -81,4 +111,5 @@ class MovieDetailFragment : Fragment() {
             findNavController().navigate(MovieDetailFragmentDirections.actionMovieDetailFragmentToThirdFragment(movie))
         }
     }
+
 }

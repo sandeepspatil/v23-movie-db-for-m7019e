@@ -22,7 +22,7 @@ data class Movie(
 
         @ColumnInfo(name = "genres")
         @Json(name = "genres")
-        var genres: Genres? = null,
+        var genres: List<Genre>? = null,
 
         @ColumnInfo(name = "poster_path")
         @Json(name = "poster_path")
@@ -58,18 +58,15 @@ data class Genre(
         val name: String,
 ) : Parcelable
 
-@Parcelize
-data class Genres(var genres: List<Genre>) : Parcelable
-
 
 class Converters {
 
         @TypeConverter
-        fun fromGenresToJSON(genres: Genres): String {
+        fun fromGenresToJSON(genres: List<Genre>): String {
                 return Gson().toJson(genres)
         }
         @TypeConverter
-        fun fromJSONToGenres(json: String): Genres {
-                return Gson().fromJson(json,Genres::class.java)
+        fun fromJSONToGenres(json: String): List<Genre> {
+                return Gson().fromJson(json,Array<Genre>::class.java).asList()
         }
 }

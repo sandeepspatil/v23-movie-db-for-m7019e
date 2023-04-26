@@ -1,36 +1,46 @@
 package com.ltu.m7019e.v23.themoviedb.adapter
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
-import android.widget.TextView
+import androidx.recyclerview.widget.DiffUtil
+import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
-import com.ltu.m7019e.v23.themoviedb.R
+import com.ltu.m7019e.v23.themoviedb.databinding.GenreListItemBinding
 import com.ltu.m7019e.v23.themoviedb.model.Genre
 
-//From: Android docs recycler view example
-//url: developer.android.com/develop/ui/views/layout/recyclerview#kotlin
-class GenreListAdapter(private val dataSet: List<Genre>) : RecyclerView.Adapter<GenreListAdapter.ViewHolder>() {
-    class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-        val textView : TextView
+class GenreListAdapter :  ListAdapter<Genre, GenreListAdapter.ViewHolder>(GenreListDiffCallback()){
+    class ViewHolder(private var binding: GenreListItemBinding) : RecyclerView.ViewHolder(binding.root) {
 
-        init {
-            textView = view.findViewById(R.id.genre_list_item)
+        fun bind(genre: Genre) {
+            binding.genre = genre
+            binding.executePendingBindings()
+        }
+
+        companion object {
+            fun from(parent: ViewGroup) : ViewHolder {
+                val layoutInflater = LayoutInflater.from(parent.context)
+                val binding = GenreListItemBinding.inflate(layoutInflater, parent, false)
+                return ViewHolder(binding)
+            }
         }
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-        val view = LayoutInflater.from(parent.context).inflate(R.layout.genre_list_item, parent, false)
-
-        return ViewHolder(view)
+        return ViewHolder.from(parent)
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        holder.textView.text = dataSet[position].name
+        holder.bind(getItem(position))
+    }
+}
+
+class GenreListDiffCallback : DiffUtil.ItemCallback<Genre>() {
+    override fun areItemsTheSame(oldItem: Genre, newItem: Genre): Boolean {
+        return oldItem.id == newItem.id
     }
 
-    override fun getItemCount() = dataSet.size
-
+    override fun areContentsTheSame(oldItem: Genre, newItem: Genre): Boolean {
+        return oldItem == newItem
+    }
 
 }
