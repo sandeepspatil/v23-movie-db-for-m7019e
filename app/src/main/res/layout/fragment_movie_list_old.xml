@@ -9,20 +9,16 @@
             type="com.ltu.m7019e.v23.themoviedb.database.Movies" />
     </data>
 
-    <GridLayout
+    <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        tools:context=".MainActivity"
-
-        app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
-        app:spanCount="2">
+        tools:context=".MainActivity">
 
         <ImageView
             android:id="@+id/status_image"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:contentDescription="@string/movies_are_being_loaded"
-
             app:layout_constraintBottom_toBottomOf="@+id/movie_list_rv"
             app:layout_constraintEnd_toEndOf="@+id/movie_list_rv"
             app:layout_constraintStart_toStartOf="@+id/movie_list_rv"
@@ -37,7 +33,7 @@
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"/>
 
 
-    </GridLayout>
+    </FrameLayout>
 
 
 </layout>

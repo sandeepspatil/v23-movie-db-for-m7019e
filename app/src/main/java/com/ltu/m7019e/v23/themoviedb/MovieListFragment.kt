@@ -9,6 +9,7 @@ import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.Lifecycle
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.findNavController
+import androidx.recyclerview.widget.GridLayoutManager
 import com.ltu.m7019e.v23.themoviedb.adapter.MovieListAdapter
 import com.ltu.m7019e.v23.themoviedb.adapter.MovieListClickListener
 import com.ltu.m7019e.v23.themoviedb.database.MovieDatabase
@@ -44,6 +45,9 @@ class MovieListFragment : Fragment() {
 
         viewModelFactory = MovieListViewModelFactory(movieDatabaseDao, application)
         viewModel = ViewModelProvider(this, viewModelFactory).get(MovieListViewModel::class.java)
+
+        val layoutManager = GridLayoutManager(requireContext(), 2)
+        binding.movieListRv.layoutManager = layoutManager
 
         val movieListAdapter = MovieListAdapter(
             MovieListClickListener { movie ->
@@ -117,5 +121,7 @@ class MovieListFragment : Fragment() {
                 return true
             }
         }, viewLifecycleOwner, Lifecycle.State.RESUMED)
+
+
     }
 }

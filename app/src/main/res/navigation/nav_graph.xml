@@ -9,7 +9,7 @@
         android:id="@+id/MovieListFragment"
         android:name="com.ltu.m7019e.v23.themoviedb.MovieListFragment"
         android:label="@string/first_fragment_label"
-        tools:layout="@layout/fragment_movie_list">
+        tools:layout="@layout/fragment_movie_list_old">
 
         <action
             android:id="@+id/action_MovieListFragment_to_MovieDetailFragment"
