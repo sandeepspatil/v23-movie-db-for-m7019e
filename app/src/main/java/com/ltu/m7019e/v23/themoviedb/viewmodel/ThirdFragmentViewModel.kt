@@ -6,6 +6,7 @@ import androidx.lifecycle.AndroidViewModel
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.viewModelScope
+import com.ltu.m7019e.v23.themoviedb.data.DefaultAppContainer
 import com.ltu.m7019e.v23.themoviedb.database.MovieDatabaseDao
 import com.ltu.m7019e.v23.themoviedb.model.Movie
 import com.ltu.m7019e.v23.themoviedb.model.Review
@@ -16,6 +17,8 @@ import kotlinx.coroutines.launch
 class ThirdFragmentViewModel(private val movieDatabaseDao: MovieDatabaseDao,
                              application: Application,
                              movie: Movie) : AndroidViewModel(application) {
+
+    private val _container : DefaultAppContainer = DefaultAppContainer()
 
     private val _dataFetchStatus = MutableLiveData<DataFetchStatus>()
     val dataFetchStatus: LiveData<DataFetchStatus>
@@ -45,9 +48,7 @@ class ThirdFragmentViewModel(private val movieDatabaseDao: MovieDatabaseDao,
 
         viewModelScope.launch {
             try {
-                val reviewResponse: ReviewResponse =
-                    TMDBApi.movieListRetrofitService.getMovieReviews(movie.id)
-                _reviews.value = reviewResponse.results
+                _reviews.value = _container.tmbdbRepository.getMovieReviews(movie.id)
                 _dataFetchStatus.value = DataFetchStatus.DONE
             } catch (e: Exception) {
                 _dataFetchStatus.value = DataFetchStatus.ERROR
@@ -61,9 +62,7 @@ class ThirdFragmentViewModel(private val movieDatabaseDao: MovieDatabaseDao,
 
         viewModelScope.launch {
             try {
-                val videoResponse: VideoResponse =
-                    TMDBApi.movieListRetrofitService.getMovieVideos(movie.id)
-                _videos.value = videoResponse.results
+                _videos.value = _container.tmbdbRepository.getMovieVideos(movie.id)
                 _dataFetchStatus.value = DataFetchStatus.DONE
             } catch (e: Exception) {
                 _dataFetchStatus.value = DataFetchStatus.ERROR
